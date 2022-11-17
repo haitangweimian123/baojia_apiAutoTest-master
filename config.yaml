@@ -1,0 +1,61 @@
+server:
+  # 本地接口服务
+  test: http://10.0.88.13
+  dev: http://192.168.8.135:8084
+
+# 基准的请求头信息
+request_headers:
+  Content-Type: application/json;charset=UTF-8
+  X-Access-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Njg2NTEyNTAsInVzZXJuYW1lIjoiYWRtaW4ifQ.qj6gtAhad-bi8hYGzXUQV7SGjt34qfKUDTzTNeJnuD8
+#  Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InZHTUdhczFMbUZTTk05Y3loR05Yc0EiLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2NjE0OTQ3MjYsImV4cCI6MTY5MzAzMDcyNiwiaXNzIjoiaHR0cHM6Ly9zY21zdGVzdC55aHdpbnMuY29tOjQ0MzQ2IiwiYXVkIjoiWWhXaW5zU1JNIiwiY2xpZW50X2lkIjoiWWhXaW5zU1JNX0FwcCIsInN1YiI6IjQ2NWVkODM5LTA5ZmQtNTVmMS0xOTAyLTM5ZmNlN2ZiZDRiNSIsImF1dGhfdGltZSI6MTY2MTQ5NDcyNiwiaWRwIjoibG9jYWwiLCJ0ZW5hbnRpZCI6ImJmMGE1ODQyLWM2OTUtNWU5My0wYTMwLTM5ZmM3YThhNjI3NCIsInJvbGUiOlsi6LSi5Yqh5a-56LSmIiwi6LSi5Yqh5Lya6K6hIiwi6LSi5Yqh5a6h5qC4Iiwi6YeH6LSt5a-56LSm5ZGYIiwi6YeH6LSt5ZGYIiwi6YeH6LSt5Li7566hIiwi6YeH6LSt5oC755uRIiwi5L6b5bqU5ZWG566h55CG5ZGYIiwi5oC755uR5a6h5qC4Iiwi5pyA57uI5a6h5qC4Il0sIm5hbWUiOiIxMTAwNjQwNiIsImVtYWlsIjoiemhlbmdjaGFvMDZAeWh3aW5zLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwic2NvcGUiOlsiWWhXaW5zU1JNIl0sImFtciI6WyJ5aHNzbyJdfQ.I1BqE4ovkbdhH6k3D96HhVzJASrfeqXm9P5EhHm7bhhvyMYMM7Bh-rvJkVy65ONvv7wrrwGoOTmDq3LwnXpoaFzMqKdBEnP5M8gnQi8RDo-VMyD9LRS4CbVzI8sSmkRu_DbqJqLcidGgOPOGfaf_S6AcjWSY0PrathDG_OvxRkJR88_bdSDfTmf6WZD9Vf7bCzesF4t5rmdkVRxF0POjWl8IFiZv2Ks3VUYYga2Bvo8I8F4VesD2zt4SGrr7uvpVUG4Y3pjxYl1DZBoWA8Po1yqprvaOl6xUKFuSzZ6GgeD1A2mni4UrXkWeh3O0aEox1efIRnHjThk-0eJLew86rQ
+#  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+
+file_path:
+  test_case: case_data.xls
+  report: report/
+  log: logs/run{time}.log
+
+email:
+  serve:
+    # 发件人邮箱USER
+    user: 2848253198@qq.com
+    # 发件人邮箱授权码
+    password: rblscnksbrfkdcgf
+    # 邮箱host
+    host: smtp.qq.com
+  context:
+    contents: 解压apiAutoReport.zip(接口测试报告)后，请使用已安装Live Server 插件的VsCode，打开解压目录下的index.html查看报告
+
+    # 收件人邮箱
+    to:  ["2848253198@qq.com"]
+    subject:  接口自动化测试报告(见附件)
+    # 附件
+
+    attachments: report.zip
+
+# 数据库校验- mysql
+database:
+  host: localhost
+  port: 3306
+  user: root
+  # 不用''会被解析成int类型数据
+  password: '123456'
+  db:  mydb
+
+  # 数据库所在的服务器配置
+  ssh_server:
+    port: 22
+    username: root
+    password: '123456'
+    # 私有密钥文件路径
+    private_key_file:
+    # 私钥密码
+    private_password:
+    # 如果使用的docker容器部署mysql服务，需要传入mysql的容器id/name
+    mysql_container: mysql8
+    # 数据库备份文件导出的本地路径, 需要保证存在该文件夹
+    sql_data_file: backup_sql/
+
+
+
+
